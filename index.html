@@ -480,6 +480,58 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
 .mk-rating-count{font-size:11px;color:var(--mid);}
 .mk-guarantee{font-size:11px;color:var(--mid);text-align:center;line-height:1.6;padding-top:14px;border-top:1px solid var(--cr3);}
 .mk-guarantee b{color:var(--dk);}
+/* ===== KASPI MODAL ===== */
+.kaspi-overlay{position:fixed;inset:0;background:rgba(26,10,10,.75);z-index:300;display:none;align-items:center;justify-content:center;}
+.kaspi-overlay.open{display:flex;}
+.kaspi-box{background:var(--cr);width:440px;max-width:95vw;border-radius:10px;overflow:hidden;}
+.kaspi-head{background:var(--dk);padding:24px 28px;display:flex;align-items:center;gap:14px;}
+.kaspi-logo{font-size:28px;}
+.kaspi-head-text{flex:1;}
+.kaspi-head-title{font-size:18px;font-weight:700;color:var(--cr);margin-bottom:2px;}
+.kaspi-head-sub{font-size:12px;color:rgba(250,247,242,.5);}
+.kaspi-close{background:none;border:none;font-size:18px;color:rgba(250,247,242,.4);cursor:pointer;}
+.kaspi-body{padding:28px;}
+.kaspi-course-name{font-size:15px;font-weight:600;color:var(--dk);margin-bottom:4px;line-height:1.3;}
+.kaspi-amount{font-size:36px;font-weight:700;color:var(--bx);letter-spacing:-1px;margin-bottom:20px;}
+.kaspi-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.kaspi-step{display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--cr2);border-radius:6px;}
+.kaspi-step-num{width:24px;height:24px;border-radius:50%;background:var(--bx);color:var(--cr);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.kaspi-step-text{font-size:13px;color:var(--dk);line-height:1.5;}
+.kaspi-step-text b{color:var(--bx);}
+.kaspi-phone{font-size:22px;font-weight:700;color:var(--dk);text-align:center;padding:14px;background:var(--cr2);border-radius:6px;margin-bottom:8px;letter-spacing:1px;}
+.kaspi-hint{font-size:11px;color:var(--mid);text-align:center;margin-bottom:20px;}
+.btn-kaspi-confirm{font-family:var(--f);font-size:15px;font-weight:700;width:100%;padding:15px;background:#ef4444;color:#fff;border:none;border-radius:6px;cursor:pointer;transition:background .2s;margin-bottom:8px;}
+.btn-kaspi-confirm:hover{background:#dc2626;}
+.btn-kaspi-cancel{font-family:var(--f);font-size:13px;width:100%;padding:10px;background:transparent;color:var(--mid);border:1px solid var(--cr3);border-radius:4px;cursor:pointer;}
+
+/* ===== COURSE PLAYER ===== */
+.player-header{background:var(--dk);padding:20px 48px;display:flex;align-items:center;gap:16px;}
+.player-back{font-family:var(--f);font-size:13px;color:rgba(250,247,242,.6);background:none;border:1px solid rgba(250,247,242,.2);border-radius:3px;padding:7px 14px;cursor:pointer;transition:all .15s;}
+.player-back:hover{color:var(--cr);border-color:rgba(250,247,242,.5);}
+.player-title-bar{flex:1;}
+.player-title-bar .player-course-title{font-size:16px;font-weight:600;color:var(--cr);margin-bottom:2px;}
+.player-title-bar .player-course-master{font-size:12px;color:rgba(250,247,242,.5);}
+.player-body{display:grid;grid-template-columns:1fr 320px;min-height:calc(100vh - 124px);}
+.player-main{background:#0a0a0a;display:flex;flex-direction:column;}
+.player-video{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.player-video-bg{position:absolute;inset:0;}
+.player-play-btn{position:relative;z-index:2;width:72px;height:72px;border-radius:50%;background:rgba(250,247,242,.15);border:2px solid rgba(250,247,242,.5);display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.player-video:hover .player-play-btn{background:rgba(139,0,0,.7);}
+.player-play-icon{width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:26px solid rgba(250,247,242,.9);margin-left:5px;}
+.player-playing-msg{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:12px;color:rgba(250,247,242,.7);background:rgba(0,0,0,.6);padding:6px 14px;border-radius:4px;display:none;z-index:3;}
+.player-info{padding:24px 32px;border-top:1px solid #1a1a1a;}
+.player-lesson-title{font-size:18px;font-weight:600;color:var(--cr);margin-bottom:6px;}
+.player-lesson-meta{font-size:12px;color:rgba(250,247,242,.4);}
+.player-sidebar{background:var(--cr2);border-left:1px solid var(--cr3);overflow-y:auto;}
+.player-sidebar-head{padding:16px 20px;border-bottom:1px solid var(--cr3);font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mid);}
+.player-lesson-list{display:flex;flex-direction:column;}
+.player-lesson-item{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--cr3);cursor:pointer;transition:background .15s;}
+.player-lesson-item:hover{background:var(--cr3);}
+.player-lesson-item.active{background:rgba(139,0,0,.08);border-left:3px solid var(--bx);}
+.player-lesson-num{font-size:10px;font-weight:700;color:var(--bx);min-width:20px;}
+.player-lesson-name{flex:1;font-size:13px;color:var(--dk);line-height:1.3;}
+.player-lesson-dur{font-size:10px;color:var(--mid);}
+.player-lesson-done{font-size:12px;color:#2d6a4f;}
 </style>
 </head>
 <body>
@@ -488,8 +540,8 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
 <nav class="nav">
   <div class="logo" onclick="showScreen('home')">SHE<b>B</b>ER</div>
   <div class="nl">
-    <div class="nli" id="nav-home" onclick="showScreen('home')">Главная</div>
-    <div class="nli act" id="nav-catalog" onclick="showScreen('catalog')">Каталог</div>
+    <div class="nli act" id="nav-home" onclick="showScreen('home')">Главная</div>
+    <div class="nli" id="nav-catalog" onclick="showScreen('catalog')">Каталог</div>
     <div class="nli" id="nav-dashboard" onclick="showScreen('dashboard')" style="display:none;">Кабинет</div>
   </div>
   <div class="na" id="nav-auth">
@@ -687,10 +739,106 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
       <div class="dash-card"><div class="dash-card-num">0</div><div class="dash-card-label">Сертификатов</div></div>
     </div>
     <div class="dash-section-title">Мои курсы</div>
-    <div class="empty-state">
-      <div class="empty-icon">🎓</div>
-      <div class="empty-text">У вас пока нет курсов<br>Найдите что-то интересное в каталоге</div>
-      <button class="btn-primary" onclick="showScreen('catalog')">Перейти в каталог</button>
+    <div id="dash-course-list">
+      <div class="empty-state">
+        <div class="empty-icon">🎓</div>
+        <div class="empty-text">У вас пока нет курсов<br>Найдите что-то интересное в каталоге</div>
+        <button class="btn-primary" onclick="showScreen('catalog')">Перейти в каталог</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KASPI MODAL -->
+<div class="kaspi-overlay" id="kaspi-modal">
+  <div class="kaspi-box">
+    <div class="kaspi-head">
+      <div class="kaspi-logo">💳</div>
+      <div class="kaspi-head-text">
+        <div class="kaspi-head-title">Оплата через Kaspi</div>
+        <div class="kaspi-head-sub">Перевод на номер телефона</div>
+      </div>
+      <button class="kaspi-close" onclick="closeKaspi()">✕</button>
+    </div>
+    <div class="kaspi-body">
+      <div class="kaspi-course-name" id="kaspi-title"></div>
+      <div class="kaspi-amount" id="kaspi-price"></div>
+      <div class="kaspi-steps">
+        <div class="kaspi-step">
+          <div class="kaspi-step-num">1</div>
+          <div class="kaspi-step-text">Откройте приложение <b>Kaspi.kz</b> на телефоне</div>
+        </div>
+        <div class="kaspi-step">
+          <div class="kaspi-step-num">2</div>
+          <div class="kaspi-step-text">Нажмите <b>Переводы → По номеру телефона</b></div>
+        </div>
+        <div class="kaspi-step">
+          <div class="kaspi-step-num">3</div>
+          <div class="kaspi-step-text">Переведите точную сумму на номер:</div>
+        </div>
+      </div>
+      <div class="kaspi-phone">+7 (700) 123-45-67</div>
+      <div class="kaspi-hint">Получатель: Sheber Platform · В комментарии укажите ваш email</div>
+      <button class="btn-kaspi-confirm" id="kaspi-confirm-btn" onclick="confirmKaspiPayment()">✓ Я оплатил — открыть курс</button>
+      <button class="btn-kaspi-cancel" onclick="closeKaspi()">Отмена</button>
+    </div>
+  </div>
+</div>
+
+<!-- COURSE PLAYER -->
+<div class="screen" id="screen-player">
+  <div class="player-header">
+    <button class="player-back" onclick="history.go(-1)||showScreen('home')">← Назад</button>
+    <div class="player-title-bar">
+      <div class="player-course-title" id="player-title">Название курса</div>
+      <div class="player-course-master" id="player-master">Мастер</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <span id="player-type" style="font-size:9px;font-weight:700;padding:3px 8px;border-radius:2px;background:var(--bx);color:var(--cr);letter-spacing:.8px;">КУРС</span>
+      <span id="player-dur" style="font-size:11px;color:rgba(250,247,242,.4);"></span>
+    </div>
+  </div>
+  <div class="player-body">
+    <div class="player-main">
+      <div class="player-video" onclick="playLesson(this)">
+        <div class="player-video-bg" id="player-bg"></div>
+        <div class="player-play-btn"><div class="player-play-icon"></div></div>
+        <div class="player-playing-msg" id="player-playing-msg">▶ Воспроизведение...</div>
+      </div>
+      <div class="player-info">
+        <div class="player-lesson-title" id="player-lesson-title">Урок 1 — Введение</div>
+        <div class="player-lesson-meta" id="player-lesson-meta">Нажмите ▶ чтобы начать</div>
+      </div>
+    </div>
+    <div class="player-sidebar">
+      <div class="player-sidebar-head">Содержание курса</div>
+      <div class="player-lesson-list" id="player-lesson-list">
+        <div class="player-lesson-item active" onclick="selectLesson(this,'Введение — о чём этот курс','18 мин')">
+          <div class="player-lesson-num">01</div>
+          <div class="player-lesson-name">Введение — о чём этот курс</div>
+          <div class="player-lesson-dur">18 мин</div>
+        </div>
+        <div class="player-lesson-item" onclick="selectLesson(this,'История и философия','24 мин')">
+          <div class="player-lesson-num">02</div>
+          <div class="player-lesson-name">История и философия</div>
+          <div class="player-lesson-dur">24 мин</div>
+        </div>
+        <div class="player-lesson-item" onclick="selectLesson(this,'Материалы и инструменты','15 мин')">
+          <div class="player-lesson-num">03</div>
+          <div class="player-lesson-name">Материалы и инструменты</div>
+          <div class="player-lesson-dur">15 мин</div>
+        </div>
+        <div class="player-lesson-item" onclick="selectLesson(this,'Подготовка глины','35 мин')">
+          <div class="player-lesson-num">04</div>
+          <div class="player-lesson-name">Подготовка глины</div>
+          <div class="player-lesson-dur">35 мин</div>
+        </div>
+        <div class="player-lesson-item" onclick="selectLesson(this,'Три техники лепки','50 мин')">
+          <div class="player-lesson-num">05</div>
+          <div class="player-lesson-name">Три техники лепки</div>
+          <div class="player-lesson-dur">50 мин</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -954,32 +1102,146 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
 const SUPABASE_URL = 'https://egzdauytcvbhlcgbilmv.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_uSI7kgYyCaDzKXwLf_UC4Q_LcTbF68i';
 const { createClient } = supabase;
-const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+let db;
+try { db = createClient(SUPABASE_URL, SUPABASE_KEY); } catch(e) { console.warn('Supabase init:', e); db = null; }
 
 let currentUser = null;
 
-// ====== DATA ======
-const DATA=[
-  {type:'к',cat:'Керамика',title:'Японская керамика вабисаби',master:'ЮМ',mname:'Юки Мацумото',price:15900,rating:5.0,students:312,dur:'10 уроков',tags:['Япония'],bg:'linear-gradient(145deg,#8B0000,#5C0000)',mc:'#8B0000',country:'🇯🇵',ai:true},
-  {type:'м',cat:'Керамика',title:'Слепи эту вазу — техника коил за вечер',master:'АК',mname:'Айгерим Касымова',price:2500,rating:5.0,students:89,dur:'2 часа',tags:['Быстро'],bg:'linear-gradient(145deg,#A01530,#6B0000)',mc:'#8B0000',country:'🇰🇿',ai:false},
-  {type:'м',cat:'Батик',title:'Расписной шёлковый платок за вечер',master:'СН',mname:'Сауле Нурланова',price:1900,rating:4.8,students:156,dur:'1.5 часа',tags:['Шёлк'],bg:'linear-gradient(145deg,#C4956A,#8B6B52)',mc:'#C4956A',country:'🇰🇿',ai:false},
-  {type:'к',cat:'Ювелирное',title:'Итальянская ювелирка: золото и серебро',master:'ЛБ',mname:'Лука Бруно',price:22900,rating:4.9,students:145,dur:'14 уроков',tags:['Люкс'],bg:'linear-gradient(145deg,#3D1C1C,#1A0A0A)',mc:'#3D1C1C',country:'🇮🇹',ai:true},
-  {type:'м',cat:'Ювелирное',title:'Кольцо из серебра своими руками',master:'ДМ',mname:'Дина Мухамедова',price:3500,rating:4.9,students:112,dur:'3 часа',tags:['Серебро'],bg:'linear-gradient(145deg,#8B0000,#3D1C1C)',mc:'#8B0000',country:'🇰🇿',ai:false},
-  {type:'к',cat:'Вышивка',title:'Французская вышивка Luneville',master:'СД',mname:'Софи Дюпон',price:18500,rating:4.9,students:203,dur:'8 уроков',tags:['Техника'],bg:'linear-gradient(145deg,#A01530,#8B0000)',mc:'#A01530',country:'🇫🇷',ai:true},
-  {type:'м',cat:'Вышивка',title:'Вышитая брошь с казахским узором',master:'ЗА',mname:'Зарина Ахметова',price:1500,rating:4.7,students:445,dur:'1 час',tags:['МК'],bg:'linear-gradient(145deg,#C4956A,#A01530)',mc:'#C4956A',country:'🇰🇿',ai:false},
-  {type:'к',cat:'Кожа',title:'Флорентийское кожевенное дело',master:'МР',mname:'Марко Росси',price:19900,rating:4.8,students:88,dur:'6 уроков',tags:['Италия'],bg:'linear-gradient(145deg,#3D1C1C,#8B6B52)',mc:'#3D1C1C',country:'🇮🇹',ai:true},
-  {type:'м',cat:'Кожа',title:'Кожаный брелок за один вечер',master:'МБ',mname:'Марат Байжанов',price:2200,rating:4.6,students:321,dur:'1.5 часа',tags:['Быстро'],bg:'linear-gradient(145deg,#8B6B52,#3D1C1C)',mc:'#8B6B52',country:'🇰🇿',ai:false},
-  {type:'к',cat:'Керамика',title:'Раку-яки: японская обжиговая керамика',master:'КТ',mname:'Кенджи Танака',price:16500,rating:4.9,students:134,dur:'6 уроков',tags:['Япония'],bg:'linear-gradient(145deg,#7A5C5C,#3D1C1C)',mc:'#7A5C5C',country:'🇯🇵',ai:true},
-  {type:'м',cat:'Батик',title:'Роспись футболки тай-дай',master:'СН',mname:'Сауле Нурланова',price:2900,rating:4.9,students:267,dur:'2 часа',tags:['Одежда'],bg:'linear-gradient(145deg,#8B0000,#C4956A)',mc:'#8B0000',country:'🇰🇿',ai:false},
-  {type:'к',cat:'Вышивка',title:'Казахский орнамент: вышивка с нуля',master:'ЗА',mname:'Зарина Ахметова',price:9900,rating:4.9,students:203,dur:'10 уроков',tags:['КЗ'],bg:'linear-gradient(145deg,#A01530,#6B0000)',mc:'#A01530',country:'🇰🇿',ai:false},
-];
-
+// ====== DATA (загружается из Supabase) ======
+let DATA = [];
 let activeType='all', activeCat='all';
+let currentCourse = null; // текущий открытый курс
+let userPurchases = []; // купленные курсы пользователя
+
+// ====== ЗАГРУЗКА КУРСОВ ======
+async function loadCourses(){
+  try {
+    const {data, error} = await db.from('courses').select('*').order('created_at', {ascending:false});
+    if(error) throw error;
+    DATA = data.map(d=>({...d, tags: d.tags||[]}));
+    renderHome();
+    renderCatalog(getFiltered());
+  } catch(e){
+    console.warn('Ошибка загрузки курсов:', e);
+  }
+}
+
+// ====== ЗАГРУЗКА ПОКУПОК ======
+async function loadPurchases(){
+  if(!currentUser) return;
+  try {
+    const {data} = await db.from('purchases').select('course_id,status').eq('user_id', currentUser.id).eq('status','paid');
+    userPurchases = (data||[]).map(p=>p.course_id);
+    updateDashboardCourses();
+  } catch(e){ console.warn('Ошибка загрузки покупок:', e); }
+}
+
+function hasPurchased(courseId){ return userPurchases.includes(courseId); }
+
+function updateDashboardCourses(){
+  document.getElementById('dash-courses').textContent = userPurchases.length;
+  const list = document.getElementById('dash-course-list');
+  if(!list) return;
+  const myCourses = DATA.filter(d=>hasPurchased(d.id));
+  if(myCourses.length===0){
+    list.innerHTML=`<div class="empty-state"><div class="empty-icon">🎓</div><div class="empty-text">У вас пока нет курсов<br>Найдите что-то интересное в каталоге</div><button class="btn-primary" onclick="showScreen('catalog')">Перейти в каталог</button></div>`;
+  } else {
+    list.innerHTML=`<div class="kgrid">${myCourses.map(d=>`<div class="kc" onclick="openCoursePlayer('${d.id}')"><div class="kcimg" style="background:${d.bg};"><div class="kc-badges"><div class="kc-type ${d.type}">${d.type==='к'?'КУРС':'МК'}</div></div><div class="kc-dur">${d.dur}</div><div class="kc-country">${d.country}</div></div><div class="kcb"><div class="kct">${d.title}</div><div class="kcf"><div class="kcp" style="color:var(--bx)">▶ Продолжить</div><div class="kcr">★ ${d.rating}</div></div></div></div>`).join('')}</div>`;
+  }
+}
+
+// ====== ОТКРЫТИЕ КУРСА / МК ======
+function openCourse(id){
+  const d = DATA.find(x=>x.id===id);
+  if(!d) return;
+  currentCourse = d;
+  const isK = d.type==='к';
+
+  // Обновляем заголовок и цену на странице курса/МК
+  if(isK){
+    document.querySelector('#screen-course .course-title').innerHTML = d.title;
+    document.querySelector('#screen-course .buy-price').textContent = d.price.toLocaleString('ru')+' ₸';
+    document.querySelector('#screen-course .course-sub').textContent = d.mname+' · '+d.country+' · '+d.dur;
+  } else {
+    document.querySelector('#screen-masterclass .mk-title').textContent = d.title;
+    document.querySelector('#screen-masterclass .mk-buy-price').textContent = d.price.toLocaleString('ru')+' ₸';
+  }
+
+  // Показываем нужную кнопку в зависимости от покупки
+  updateBuyButton(d);
+  showScreen(isK?'course':'masterclass');
+}
+
+function updateBuyButton(d){
+  const isK = d.type==='к';
+  const btnId = isK?'course-buy-btn':'mk-buy-btn';
+  const btn = document.getElementById(btnId);
+  if(!btn) return;
+  if(hasPurchased(d.id)){
+    btn.textContent='▶ Смотреть курс';
+    btn.style.background='#2d6a4f';
+    btn.style.animation='none';
+    btn.onclick=()=>openCoursePlayer(d.id);
+  } else {
+    btn.textContent=isK?'Купить курс':'Купить мастер-класс';
+    btn.style.background='';
+    btn.style.animation='';
+    btn.onclick=()=>openKaspiPayment(d);
+  }
+}
+
+// ====== KASPI ОПЛАТА ======
+function openKaspiPayment(d){
+  if(!currentUser){ openAuth('register'); showToast('Сначала войдите в аккаунт'); return; }
+  currentCourse = d;
+  document.getElementById('kaspi-title').textContent = d.title;
+  document.getElementById('kaspi-price').textContent = d.price.toLocaleString('ru')+' ₸';
+  document.getElementById('kaspi-modal').classList.add('open');
+}
+function closeKaspi(){ document.getElementById('kaspi-modal').classList.remove('open'); }
+
+async function confirmKaspiPayment(){
+  if(!currentCourse||!currentUser) return;
+  const btn = document.getElementById('kaspi-confirm-btn');
+  btn.textContent='Проверяем...'; btn.disabled=true;
+  try {
+    // Записываем покупку в Supabase
+    const {error} = await db.from('purchases').insert({
+      user_id: currentUser.id,
+      course_id: currentCourse.id,
+      amount: currentCourse.price,
+      status: 'paid' // в реальности статус выставляется после webhook от Kaspi
+    });
+    if(error) throw error;
+    userPurchases.push(currentCourse.id);
+    closeKaspi();
+    updateBuyButton(currentCourse);
+    updateDashboardCourses();
+    showToast('✓ Оплата подтверждена! Курс открыт.');
+    setTimeout(()=>openCoursePlayer(currentCourse.id), 1000);
+  } catch(e){
+    btn.textContent='Я оплатил — открыть курс';
+    btn.disabled=false;
+    showToast('Ошибка: '+e.message);
+  }
+}
+
+// ====== ПЛЕЕР КУРСА ======
+function openCoursePlayer(id){
+  const d = DATA.find(x=>x.id===id)||currentCourse;
+  if(!d) return;
+  currentCourse = d;
+  document.getElementById('player-title').textContent = d.title;
+  document.getElementById('player-master').textContent = d.mname+' '+d.country;
+  document.getElementById('player-bg').style.background = d.bg;
+  document.getElementById('player-type').textContent = d.type==='к'?'КУРС':'МК';
+  document.getElementById('player-dur').textContent = d.dur;
+  showScreen('player');
+}
 
 function cardHTML(d){
   const isK=d.type==='к';
-  const dest=isK?'course':'masterclass';
-  return `<div class="kc" onclick="showScreen('${dest}')">
+  return `<div class="kc" onclick="openCourse('${d.id}')">
     <div class="kcimg" style="background:${d.bg};">
       <div class="kc-badges"><div class="kc-type ${d.type}">${isK?'КУРС':'МК'}</div>${d.ai?'<div class="kc-ai">✦ AI</div>':''}</div>
       <div class="kc-dur">${d.dur}</div>
@@ -988,7 +1250,7 @@ function cardHTML(d){
     <div class="kcb">
       <div class="kcm"><div class="kca" style="background:${d.mc};">${d.master}</div><div class="kcmn">${d.mname}</div></div>
       <div class="kct">${d.title}</div>
-      <div class="kc-tags">${d.tags.map(t=>`<span class="kc-tag">${t}</span>`).join('')}</div>
+      <div class="kc-tags">${(d.tags||[]).map(t=>`<span class="kc-tag">${t}</span>`).join('')}</div>
       <div class="kcf"><div class="kcp">${d.price.toLocaleString('ru')} ₸</div><div class="kcr">★ ${d.rating} · ${d.students}</div></div>
     </div>
   </div>`;
@@ -1075,6 +1337,7 @@ async function loadUser(){
   document.getElementById('user-name-nav').textContent=name.split(' ')[0];
   document.getElementById('dash-name').textContent=name.split(' ')[0];
   document.getElementById('dash-role-label').textContent=(role==='master'?'Мастер':'Ученик')+' · Sheber';
+  await loadPurchases();
 }
 
 function showMsg(el,text,type){ el.className='auth-msg'+(type?' '+type:''); el.textContent=text; }
@@ -1084,6 +1347,19 @@ function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ====== PLAYER HELPERS ======
+function playLesson(el){
+  const msg = document.getElementById('player-playing-msg');
+  msg.style.display='block';
+  setTimeout(()=>msg.style.display='none', 3000);
+}
+function selectLesson(el, name, dur){
+  document.querySelectorAll('.player-lesson-item').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('player-lesson-title').textContent = name;
+  document.getElementById('player-lesson-meta').textContent = dur+' · Нажмите ▶ чтобы начать';
 }
 
 // ====== MODULE ACCORDION ======
@@ -1109,8 +1385,8 @@ function toggleFollow(){
 
 // ====== INIT ======
 document.getElementById('auth-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('auth-modal'))closeAuth(); });
-renderHome();
-renderCatalog(DATA);
+document.getElementById('kaspi-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('kaspi-modal'))closeKaspi(); });
+loadCourses();
 loadUser();
 </script>
 </body>
