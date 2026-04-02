@@ -493,6 +493,187 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
 .mcc-title{font-size:14px;font-weight:600;color:var(--dk);margin-bottom:4px;}
 .mcc-meta{font-size:11px;color:var(--mid);}
 .mcc-status{font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:rgba(45,106,79,.1);color:#2d6a4f;}
+
+/* ============================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ============================================ */
+@media(max-width:768px){
+
+  /* NAV */
+  .nav{padding:0 16px;height:56px;}
+  .logo{font-size:18px;letter-spacing:2px;}
+  .nl{display:none;}
+  .na{gap:6px;}
+  .btn{font-size:11px;padding:7px 12px;}
+  .user-pill{padding:5px 10px;font-size:11px;}
+
+  /* HERO */
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hl{padding:36px 20px 28px;}
+  .hh1{font-size:36px;letter-spacing:-1px;margin-bottom:14px;}
+  .hsub{font-size:14px;margin-bottom:24px;}
+  .hact{flex-direction:column;gap:8px;margin-bottom:28px;}
+  .hbtn{width:100%;text-align:center;padding:14px;}
+  .hst{gap:20px;}
+  .stn{font-size:24px;}
+  .hr{display:none;}
+
+  /* MARQUEE */
+  .mqt{font-size:11px;padding:0 16px;}
+
+  /* SECTIONS */
+  .sec{padding:40px 20px;}
+  .sh{flex-direction:column;gap:12px;margin-bottom:24px;}
+  .sti{font-size:28px;}
+  .sa{font-size:11px;}
+
+  /* FORMAT CARDS */
+  .fmt-grid{grid-template-columns:1fr;gap:12px;margin-bottom:32px;}
+  .fmt-title{font-size:18px;}
+
+  /* COURSE CARDS */
+  .kgrid{grid-template-columns:1fr 1fr;gap:12px;}
+  .kgrid3{grid-template-columns:1fr 1fr;gap:12px;}
+  .kgrid2{grid-template-columns:1fr;gap:12px;}
+  .kcimg{height:130px;}
+  .kct{font-size:12px;}
+  .kcp{font-size:14px;}
+
+  /* MASTERS */
+  .mg{grid-template-columns:1fr 1fr;gap:10px;}
+  .mcp{width:52px;height:52px;font-size:16px;}
+  .mcn{font-size:13px;}
+  .mcs{font-size:10px;}
+  .mcc{font-size:10px;}
+
+  /* CTA */
+  .cta{padding:48px 20px;}
+  .ctah{font-size:32px;}
+  .ctaa{flex-direction:column;gap:8px;}
+  .ctabp,.ctabg{width:100%;padding:14px;}
+
+  /* FOOTER */
+  .ft{flex-direction:column;gap:16px;text-align:center;padding:24px 20px;}
+  .ftlinks{flex-wrap:wrap;justify-content:center;gap:16px;}
+
+  /* CATALOG */
+  .ph{padding:28px 20px 24px;}
+  .ph-title{font-size:28px;letter-spacing:-1px;}
+  .ph-sub{font-size:13px;}
+  .search-wrap{flex-direction:column;gap:8px;max-width:100%;}
+  .search-inp{width:100%;}
+  .cat-body{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .type-tabs{padding:0 16px;overflow-x:auto;white-space:nowrap;}
+  .cat-main{padding:16px;}
+  .sort-row{flex-direction:column;gap:8px;align-items:flex-start;}
+
+  /* COURSE PAGE */
+  .course-hero{padding:24px 20px 0;}
+  .hero-grid{grid-template-columns:1fr;gap:0;}
+  .course-title{font-size:26px;}
+  .course-sub{font-size:13px;}
+  .hero-meta{gap:12px;flex-wrap:wrap;}
+  .hm-item{font-size:12px;}
+  .buy-card{margin:16px 0 0;border-radius:0;border-left:none;border-right:none;}
+  .buy-price{font-size:28px;}
+  .course-body{padding:24px 20px;}
+  .course-body-grid{grid-template-columns:1fr;}
+  .right-sticky{position:static;}
+  .learn-grid{grid-template-columns:1fr;gap:8px;}
+  .section-title{font-size:18px;}
+
+  /* MASTER PROFILE */
+  .master-hero{padding:24px 20px 0;}
+  .master-hero-grid{grid-template-columns:auto 1fr;gap:16px;}
+  .master-ava-lg{width:80px;height:80px;font-size:24px;}
+  .master-name-lg{font-size:24px;}
+  .master-spec-lg{font-size:13px;}
+  .master-stats-lg{gap:16px;flex-wrap:wrap;}
+  .ms-val{font-size:18px;}
+  .hero-actions{flex-direction:row;flex-wrap:wrap;}
+  .btn-follow,.btn-msg{padding:10px 16px;font-size:12px;}
+  .profile-tabs{padding:0 16px;}
+  .profile-body{grid-template-columns:1fr;}
+  .profile-sidebar{display:none;}
+  .profile-main{padding:20px;}
+  .portfolio-grid{grid-template-columns:repeat(3,1fr);}
+
+  /* MASTERCLASS PAGE */
+  .mk-bread{padding:12px 20px;}
+  .mk-main{grid-template-columns:1fr;}
+  .mk-left{padding:20px;border-right:none;}
+  .mk-right{padding:16px 20px;}
+  .mk-title{font-size:26px;}
+  .mk-buy-card{position:static;}
+  .meta-pills{gap:14px;}
+  .meta-val{font-size:16px;}
+  .photos-grid{grid-template-columns:repeat(3,1fr);}
+  .materials-grid{grid-template-columns:1fr;}
+
+  /* DASHBOARD */
+  .dash-header{padding:28px 20px;}
+  .dash-welcome{font-size:24px;}
+  .dash-body{padding:24px 20px;}
+  .dash-grid{grid-template-columns:repeat(3,1fr);gap:10px;}
+  .dash-card{padding:14px 10px;}
+  .dash-card-num{font-size:22px;}
+  .dash-card-label{font-size:9px;}
+  .upload-grid{grid-template-columns:1fr;}
+
+  /* PLAYER */
+  .player-header{padding:14px 16px;gap:10px;}
+  .player-back{padding:6px 10px;font-size:12px;}
+  .player-title-bar .player-course-title{font-size:13px;}
+  .player-body{grid-template-columns:1fr;}
+  .player-sidebar{max-height:280px;overflow-y:auto;}
+  .player-info{padding:16px;}
+  .player-lesson-title{font-size:15px;}
+
+  /* AUTH MODAL */
+  .modal{width:95vw;}
+  .modal-head{padding:18px 20px;}
+  .modal-body{padding:18px 20px;}
+
+  /* KASPI MODAL */
+  .kaspi-box{width:95vw;}
+  .kaspi-body{padding:20px;}
+  .kaspi-amount{font-size:28px;}
+  .kaspi-phone{font-size:18px;}
+
+  /* REVIEWS */
+  .reviews-summary{flex-direction:column;gap:14px;}
+  .rev-big-num{font-size:40px;}
+
+  /* MASTER PROFILE HERO - mobile override */
+  .master-hero-grid{grid-template-columns:1fr;text-align:left;}
+  .hero-actions{display:flex;flex-direction:row;gap:8px;margin-top:16px;}
+
+  /* bottom nav bar для мобильного */
+  .mob-nav{display:flex;}
+}
+
+/* Bottom navigation bar — только мобильный */
+.mob-nav{
+  display:none;
+  position:fixed;
+  bottom:0;left:0;right:0;
+  background:var(--cr);
+  border-top:1px solid var(--cr3);
+  z-index:150;
+  padding:8px 0 max(8px, env(safe-area-inset-bottom));
+}
+.mob-nav-items{display:flex;justify-content:space-around;align-items:center;}
+.mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 16px;cursor:pointer;color:var(--mid);transition:color .15s;border:none;background:none;font-family:var(--f);}
+.mob-nav-item.active{color:var(--bx);}
+.mob-nav-item:hover{color:var(--dk);}
+.mob-nav-icon{font-size:20px;line-height:1;}
+.mob-nav-label{font-size:9px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+
+/* Отступ снизу для контента чтобы не перекрывал bottom nav */
+@media(max-width:768px){
+  body{padding-bottom:64px;}
+}
 /* ===== KASPI MODAL ===== */
 .kaspi-overlay{position:fixed;inset:0;background:rgba(26,10,10,.75);z-index:300;display:none;align-items:center;justify-content:center;}
 .kaspi-overlay.open{display:flex;}
@@ -917,6 +1098,28 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
     </div>
   </div>
 </div>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mob-nav" id="mob-nav">
+  <div class="mob-nav-items">
+    <button class="mob-nav-item active" id="mob-home" onclick="showScreen('home');setMobNav('home')">
+      <div class="mob-nav-icon">🏠</div>
+      <div class="mob-nav-label">Главная</div>
+    </button>
+    <button class="mob-nav-item" id="mob-catalog" onclick="showScreen('catalog');setMobNav('catalog')">
+      <div class="mob-nav-icon">🎓</div>
+      <div class="mob-nav-label">Каталог</div>
+    </button>
+    <button class="mob-nav-item" id="mob-dashboard" onclick="currentUser?showScreen('dashboard')&&setMobNav('dashboard'):openAuth('login')" style="display:none;">
+      <div class="mob-nav-icon">👤</div>
+      <div class="mob-nav-label">Кабинет</div>
+    </button>
+    <button class="mob-nav-item" id="mob-auth-btn" onclick="openAuth('login')">
+      <div class="mob-nav-icon">🔑</div>
+      <div class="mob-nav-label">Войти</div>
+    </button>
+  </div>
+</nav>
 
 <div class="toast" id="toast"></div>
 
@@ -1396,7 +1599,10 @@ async function logout(){
   document.getElementById('nav-auth').style.display='flex';
   document.getElementById('nav-user').style.display='none';
   document.getElementById('nav-dashboard').style.display='none';
+  document.getElementById('mob-dashboard').style.display='none';
+  document.getElementById('mob-auth-btn').style.display='flex';
   showScreen('home');
+  setMobNav('home');
   showToast('Вы вышли из аккаунта');
 }
 
@@ -1420,7 +1626,10 @@ async function loadUser(){
   } else {
     document.getElementById('dash-student-section').style.display='block';
     document.getElementById('dash-master-section').style.display='none';
-    await loadPurchases();
+    // Мобильный nav
+  document.getElementById('mob-dashboard').style.display='flex';
+  document.getElementById('mob-auth-btn').style.display='none';
+  await loadPurchases();
   }
 }
 
@@ -1565,6 +1774,13 @@ async function loadMasterCourses(){
         <div class="mcc-status">✓ Опубликован</div>
       </div>`).join('');
   }
+}
+
+// ====== MOBILE NAV ======
+function setMobNav(name){
+  document.querySelectorAll('.mob-nav-item').forEach(x=>x.classList.remove('active'));
+  const el = document.getElementById('mob-'+name);
+  if(el) el.classList.add('active');
 }
 
 // ====== MODULE ACCORDION ======
