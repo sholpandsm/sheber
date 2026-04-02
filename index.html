@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheber — Платформа для мастеров мира</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bx:#8B0000;--bx2:#6B0000;--bx3:#A50000;
+  --cr:#FAF7F2;--cr2:#F2EBE0;--cr3:#E8DDD0;
+  --dk:#1A0A0A;--dk2:#3D1C1C;--mid:#7A5C5C;
+  --gd:#C4956A;--f:'Onest',sans-serif;
+}
+body{font-family:var(--f);background:var(--cr);color:var(--dk);}
+
+/* NAV */
+.nav{background:var(--cr);border-bottom:1px solid var(--cr3);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{font-size:22px;font-weight:700;color:var(--dk);letter-spacing:3px;text-transform:uppercase;cursor:pointer;}
+.logo b{color:var(--bx);}
+.nl{display:flex;gap:28px;}
+.nli{font-size:12px;color:var(--mid);letter-spacing:.5px;cursor:pointer;transition:color .15s;}
+.nli:hover,.nli.act{color:var(--dk);}
+.nli.act{font-weight:600;border-bottom:2px solid var(--bx);padding-bottom:2px;}
+.na{display:flex;gap:10px;}
+.btn{font-family:var(--f);font-size:12px;font-weight:500;padding:8px 18px;border-radius:3px;cursor:pointer;transition:all .15s;letter-spacing:.3px;}
+.btn-o{background:transparent;color:var(--dk);border:1px solid var(--cr3);}
+.btn-o:hover{border-color:var(--dk);}
+.btn-s{background:var(--bx);color:var(--cr);border:1px solid var(--bx);}
+.btn-s:hover{background:var(--bx2);}
+
+/* SCREENS */
+.screen{display:none;}
+.screen.active{display:block;}
+
+/* ===== HOME ===== */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;}
+.hl{padding:72px 48px;display:flex;flex-direction:column;justify-content:center;}
+.htag{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--bx);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.htag::before{content:'';width:28px;height:1px;background:var(--bx);}
+.hh1{font-size:64px;font-weight:700;line-height:1.0;color:var(--dk);margin-bottom:20px;letter-spacing:-1.5px;}
+.hh1 span{color:var(--bx);}
+.hsub{font-size:15px;font-weight:300;color:var(--mid);line-height:1.75;max-width:400px;margin-bottom:36px;}
+.hact{display:flex;gap:12px;margin-bottom:44px;}
+.hbtn{font-family:var(--f);font-size:13px;font-weight:500;padding:13px 28px;border-radius:3px;cursor:pointer;transition:all .2s;}
+.hbp{background:var(--bx);color:var(--cr);border:1px solid var(--bx);}
+.hbp:hover{background:var(--bx2);}
+.hbs{background:transparent;color:var(--dk);border:1px solid var(--cr3);}
+.hbs:hover{border-color:var(--mid);}
+.hst{display:flex;gap:36px;}
+.stn{font-size:32px;font-weight:700;color:var(--dk);}
+.stl{font-size:11px;color:var(--mid);margin-top:2px;letter-spacing:.3px;}
+.hr{background:var(--cr2);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;overflow:hidden;}
+.hc{display:flex;align-items:flex-end;padding:20px;position:relative;overflow:hidden;}
+.hc::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,10,10,.55) 0%,transparent 60%);}
+.hct{position:relative;z-index:1;}
+.hcn{font-size:14px;font-weight:500;color:var(--cr);line-height:1.2;}
+.hcs{font-size:10px;color:rgba(250,247,242,.65);margin-top:2px;}
+.hc1{background:linear-gradient(145deg,#8B0000,#5C0000);grid-row:span 2;}
+.hc2{background:linear-gradient(145deg,#C4956A,#8B6B52);}
+.hc3{background:linear-gradient(145deg,#3D1C1C,#1A0A0A);}
+.hcbadge{position:absolute;top:14px;right:14px;background:var(--bx);color:var(--cr);font-size:9px;font-weight:600;padding:3px 8px;border-radius:2px;letter-spacing:.8px;z-index:2;}
+
+.mq{background:var(--bx);padding:13px 0;overflow:hidden;}
+.mqi{display:flex;white-space:nowrap;animation:mq 22s linear infinite;}
+.mqt{font-size:13px;color:var(--cr);letter-spacing:1px;padding:0 28px;opacity:.9;}
+.mqd{color:var(--gd);}
+@keyframes mq{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.sec{padding:72px 48px;}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;}
+.stg{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bx);margin-bottom:10px;}
+.sti{font-size:40px;font-weight:700;color:var(--dk);line-height:1.05;letter-spacing:-1px;}
+.sti span{color:var(--bx);}
+.sa{font-size:11px;color:var(--mid);cursor:pointer;border-bottom:1px solid var(--cr3);padding-bottom:2px;transition:all .15s;}
+.sa:hover{color:var(--dk);border-color:var(--dk);}
+
+/* FORMAT CARDS */
+.fmt-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:56px;}
+.fmt-card{border-radius:8px;padding:28px;border:1px solid var(--cr3);cursor:pointer;transition:all .2s;position:relative;}
+.fmt-card:hover{transform:translateY(-2px);}
+.fmt-card.primary{background:var(--bx);border-color:var(--bx);}
+.fmt-card.secondary{background:var(--cr);}
+.fmt-icon{font-size:28px;margin-bottom:14px;}
+.fmt-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.fmt-card.primary .fmt-label{color:rgba(250,247,242,.6);}
+.fmt-card.secondary .fmt-label{color:var(--bx);}
+.fmt-title{font-size:22px;font-weight:700;margin-bottom:10px;letter-spacing:-.5px;}
+.fmt-card.primary .fmt-title{color:var(--cr);}
+.fmt-card.secondary .fmt-title{color:var(--dk);}
+.fmt-desc{font-size:13px;font-weight:300;line-height:1.7;margin-bottom:18px;}
+.fmt-card.primary .fmt-desc{color:rgba(250,247,242,.75);}
+.fmt-card.secondary .fmt-desc{color:var(--mid);}
+.fmt-price b{font-size:20px;font-weight:700;}
+.fmt-card.primary .fmt-price{color:rgba(250,247,242,.8);}
+.fmt-card.primary .fmt-price b{color:var(--cr);}
+.fmt-card.secondary .fmt-price{color:var(--mid);}
+.fmt-card.secondary .fmt-price b{color:var(--bx);}
+.fmt-price{font-size:13px;font-weight:500;margin-bottom:14px;}
+.fmt-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.fmt-tag{font-size:10px;font-weight:500;padding:4px 10px;border-radius:20px;}
+.fmt-card.primary .fmt-tag{background:rgba(250,247,242,.15);color:var(--cr);}
+.fmt-card.secondary .fmt-tag{background:var(--cr2);color:var(--mid);}
+
+/* CARDS */
+.kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.kgrid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.kc{background:var(--cr);border:1px solid var(--cr3);border-radius:6px;overflow:hidden;cursor:pointer;transition:all .2s;}
+.kc:hover{border-color:var(--gd);transform:translateY(-2px);}
+.kcimg{height:170px;position:relative;}
+.kcimg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,10,10,.55) 0%,transparent 55%);}
+.kc-badges{position:absolute;top:10px;left:10px;display:flex;gap:4px;z-index:2;}
+.kc-type{font-size:9px;font-weight:700;padding:3px 7px;border-radius:2px;letter-spacing:.8px;text-transform:uppercase;}
+.kc-type.k{background:var(--bx);color:var(--cr);}
+.kc-type.m{background:var(--gd);color:var(--dk);}
+.kc-ai{font-size:9px;font-weight:600;padding:3px 7px;border-radius:2px;background:rgba(196,149,106,.9);color:var(--dk);}
+.kc-dur{position:absolute;bottom:10px;right:10px;font-size:9px;color:rgba(250,247,242,.85);z-index:2;background:rgba(26,10,10,.45);padding:2px 6px;border-radius:2px;}
+.kc-country{position:absolute;bottom:10px;left:10px;font-size:11px;z-index:2;}
+.kc-fav{position:absolute;top:10px;right:10px;z-index:2;background:rgba(26,10,10,.35);border:none;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:rgba(250,247,242,.8);}
+.kc-fav:hover{background:rgba(139,0,0,.5);color:var(--cr);}
+.kcb{padding:14px 16px;}
+.kcm{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+.kca{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--cr);flex-shrink:0;}
+.kcmn{font-size:11px;color:var(--mid);}
+.kct{font-size:13px;font-weight:600;color:var(--dk);line-height:1.3;margin-bottom:8px;}
+.kc-tags{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap;}
+.kc-tag{font-size:9px;background:var(--cr2);color:var(--mid);padding:2px 6px;border-radius:2px;}
+.kcf{display:flex;align-items:center;justify-content:space-between;}
+.kcp{font-size:16px;font-weight:700;color:var(--bx);}
+.kcr{font-size:10px;color:var(--mid);}
+
+/* MASTERS */
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.mc{text-align:center;padding:24px 16px;border-radius:6px;cursor:pointer;transition:background .2s;}
+.mc:hover{background:var(--cr2);}
+.mcp{width:68px;height:68px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--cr);}
+.mcn{font-size:15px;font-weight:600;color:var(--dk);margin-bottom:4px;}
+.mcs{font-size:11px;color:var(--mid);}
+.mcc{font-size:11px;color:var(--bx);margin-top:6px;font-weight:500;}
+
+/* CTA */
+.cta{background:var(--dk);padding:72px 48px;text-align:center;}
+.ctat{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gd);margin-bottom:18px;}
+.ctah{font-size:48px;font-weight:700;color:var(--cr);line-height:1.05;margin-bottom:14px;letter-spacing:-1px;}
+.ctah span{color:var(--bx3);}
+.ctas{font-size:14px;font-weight:300;color:rgba(250,247,242,.55);margin-bottom:36px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.ctaa{display:flex;gap:12px;justify-content:center;}
+.ctabp{font-family:var(--f);font-size:13px;font-weight:500;padding:13px 32px;background:var(--bx);color:var(--cr);border:1px solid var(--bx);border-radius:3px;cursor:pointer;}
+.ctabp:hover{background:var(--bx2);}
+.ctabg{font-family:var(--f);font-size:13px;font-weight:500;padding:13px 32px;background:transparent;color:var(--cr);border:1px solid rgba(250,247,242,.25);border-radius:3px;cursor:pointer;}
+.ctabg:hover{border-color:var(--cr);}
+
+/* FOOTER */
+.ft{background:var(--cr2);border-top:1px solid var(--cr3);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;}
+.ftl{font-size:18px;font-weight:700;color:var(--dk);letter-spacing:3px;}
+.ftl b{color:var(--bx);}
+.ftlinks{display:flex;gap:24px;}
+.ftli{font-size:11px;color:var(--mid);cursor:pointer;}
+.ftc{font-size:11px;color:var(--mid);}
+
+/* ===== CATALOG ===== */
+.ph{background:var(--dk);padding:48px 48px 40px;}
+.ph-bread{font-size:11px;color:rgba(250,247,242,.4);margin-bottom:14px;}
+.ph-bread span{color:rgba(250,247,242,.7);cursor:pointer;}
+.ph-title{font-size:48px;font-weight:700;color:var(--cr);line-height:1.05;letter-spacing:-1.5px;margin-bottom:8px;}
+.ph-title b{color:var(--bx3);}
+.ph-sub{font-size:14px;font-weight:300;color:rgba(250,247,242,.55);margin-bottom:20px;}
+.ph-ai-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(196,149,106,.15);border:1px solid rgba(196,149,106,.3);border-radius:4px;padding:8px 14px;margin-bottom:24px;}
+.ph-ai-dot{width:7px;height:7px;border-radius:50%;background:var(--gd);animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+.ph-ai-text{font-size:12px;color:var(--gd);font-weight:500;}
+.search-wrap{display:flex;gap:10px;max-width:560px;}
+.search-inp{font-family:var(--f);font-size:13px;padding:12px 16px;border-radius:4px;border:1px solid rgba(250,247,242,.15);background:rgba(250,247,242,.08);color:var(--cr);flex:1;outline:none;}
+.search-inp::placeholder{color:rgba(250,247,242,.35);}
+.search-inp:focus{border-color:rgba(250,247,242,.4);}
+.search-btn{font-family:var(--f);font-size:12px;font-weight:500;padding:12px 20px;background:var(--bx);color:var(--cr);border:none;border-radius:4px;cursor:pointer;}
+.search-btn:hover{background:var(--bx2);}
+
+.cat-body{display:grid;grid-template-columns:240px 1fr;}
+.sidebar{background:var(--cr2);border-right:1px solid var(--cr3);padding:28px 20px;}
+.sb-section{margin-bottom:24px;}
+.sb-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:10px;}
+.sb-opts{display:flex;flex-direction:column;gap:3px;}
+.sb-opt{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:4px;cursor:pointer;transition:background .15s;font-size:12px;color:var(--dk);}
+.sb-opt:hover{background:var(--cr3);}
+.sb-opt.active{background:var(--bx);color:var(--cr);}
+.sb-opt-count{font-size:10px;color:var(--mid);background:var(--cr3);padding:1px 6px;border-radius:10px;}
+.sb-opt.active .sb-opt-count{background:rgba(250,247,242,.2);color:var(--cr);}
+.lang-row{display:flex;gap:5px;flex-wrap:wrap;}
+.lang-pill{font-size:10px;font-weight:500;padding:4px 9px;border-radius:2px;background:var(--cr3);color:var(--mid);cursor:pointer;border:1px solid transparent;transition:all .15s;}
+.lang-pill.active{background:var(--bx);color:var(--cr);}
+.ai-note{font-size:10px;color:var(--gd);margin-top:6px;}
+.price-row{display:flex;gap:6px;}
+.price-inp{font-family:var(--f);font-size:12px;padding:7px 10px;border:1px solid var(--cr3);border-radius:4px;background:var(--cr);color:var(--dk);width:100%;outline:none;}
+.sb-reset{font-size:11px;color:var(--bx);cursor:pointer;border:none;background:none;font-family:var(--f);padding:0;margin-top:8px;}
+.type-tabs{display:flex;gap:0;border-bottom:1px solid var(--cr3);padding:0 32px;background:var(--cr);}
+.type-tab{font-size:13px;font-weight:500;padding:14px 18px;border-bottom:2px solid transparent;cursor:pointer;color:var(--mid);transition:all .15s;display:flex;align-items:center;gap:6px;}
+.type-tab:hover{color:var(--dk);}
+.type-tab.active{color:var(--bx);border-bottom-color:var(--bx);}
+.type-tab-count{font-size:10px;background:var(--cr2);color:var(--mid);padding:2px 7px;border-radius:10px;}
+.type-tab.active .type-tab-count{background:var(--bx);color:var(--cr);}
+.cat-main{padding:24px 28px;}
+.sort-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+.sort-left{font-size:13px;color:var(--mid);}
+.sort-left b{color:var(--dk);font-weight:600;}
+.sort-sel{font-family:var(--f);font-size:12px;padding:7px 12px;border:1px solid var(--cr3);border-radius:4px;background:var(--cr);color:var(--dk);cursor:pointer;outline:none;}
+.load-more{text-align:center;margin-top:28px;padding-bottom:40px;}
+.btn-more{font-family:var(--f);font-size:13px;font-weight:500;padding:12px 32px;background:transparent;color:var(--bx);border:1.5px solid var(--bx);border-radius:4px;cursor:pointer;}
+.btn-more:hover{background:var(--bx);color:var(--cr);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="logo" onclick="showScreen('home')">SHE<b>B</b>ER</div>
+  <div class="nl">
+    <div class="nli" id="nav-home" onclick="showScreen('home')">Главная</div>
+    <div class="nli act" id="nav-catalog" onclick="showScreen('catalog')">Каталог</div>
+    <div class="nli">Мастера</div>
+    <div class="nli">О нас</div>
+  </div>
+  <div class="na">
+    <button class="btn btn-o">Войти</button>
+    <button class="btn btn-s">Стать мастером</button>
+  </div>
+</nav>
+
+<!-- ===== HOME SCREEN ===== -->
+<div class="screen active" id="screen-home">
+
+  <section class="hero">
+    <div class="hl">
+      <div class="htag">Платформа для мастеров мира</div>
+      <h1 class="hh1">Хэндмейд —<br>это <span>новая</span><br>роскошь</h1>
+      <p class="hsub">Sheber объединяет лучших хэндмейд-дизайнеров и мастеров из Казахстана, России, Японии, Италии и других стран.</p>
+      <div class="hact">
+        <button class="hbtn hbp" onclick="showScreen('catalog')">Смотреть курсы</button>
+        <button class="hbtn hbs">Стать мастером</button>
+      </div>
+      <div class="hst">
+        <div><div class="stn">2 400+</div><div class="stl">Мастеров мира</div></div>
+        <div><div class="stn">18 000+</div><div class="stl">Учеников</div></div>
+        <div><div class="stn">340+</div><div class="stl">Курсов и МК</div></div>
+      </div>
+    </div>
+    <div class="hr">
+      <div class="hc hc1"><div class="hcbadge">NEW</div><div class="hct"><div class="hcn">Японская керамика</div><div class="hcs">Юки Мацумото · 🇯🇵</div></div></div>
+      <div class="hc hc2"><div class="hct"><div class="hcn">Ювелирное дело</div><div class="hcs">Дина Мухамедова · 🇰🇿</div></div></div>
+      <div class="hc hc3"><div class="hct"><div class="hcn">Батик на шёлке</div><div class="hcs">Сауле Нурланова · 🇰🇿</div></div></div>
+    </div>
+  </section>
+
+  <div class="mq">
+    <div class="mqi">
+      <span class="mqt">Керамика</span><span class="mqd"> · </span><span class="mqt">Ювелирное дело</span><span class="mqd"> · </span><span class="mqt">Роспись шёлка</span><span class="mqd"> · </span><span class="mqt">Вышивка</span><span class="mqd"> · </span><span class="mqt">Кожа</span><span class="mqd"> · </span><span class="mqt">Макраме</span><span class="mqd"> · </span><span class="mqt">Батик</span><span class="mqd"> · </span><span class="mqt">Войлок</span><span class="mqd"> · </span><span class="mqt">Керамика</span><span class="mqd"> · </span><span class="mqt">Ювелирное дело</span><span class="mqd"> · </span><span class="mqt">Роспись шёлка</span><span class="mqd"> · </span><span class="mqt">Вышивка</span><span class="mqd"> · </span><span class="mqt">Кожа</span><span class="mqd"> · </span><span class="mqt">Макраме</span><span class="mqd"> · </span><span class="mqt">Батик</span><span class="mqd"> · </span><span class="mqt">Войлок</span><span class="mqd"> · </span>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="sh"><div><div class="stg">Два формата</div><div class="sti">Выберите свой <span>путь</span></div></div></div>
+    <div class="fmt-grid">
+      <div class="fmt-card primary" onclick="showScreen('catalog')">
+        <div class="fmt-icon">🎓</div>
+        <div class="fmt-label">Курс</div>
+        <div class="fmt-title">Глубокое обучение</div>
+        <div class="fmt-desc">Полноценный курс с несколькими уроками, практическими заданиями и обратной связью от мастера. Освойте технику от А до Я.</div>
+        <div class="fmt-price">от <b>8 900 ₸</b></div>
+        <div class="fmt-tags"><span class="fmt-tag">Несколько уроков</span><span class="fmt-tag">Обратная связь</span><span class="fmt-tag">Сертификат</span></div>
+      </div>
+      <div class="fmt-card secondary" onclick="showScreen('catalog')">
+        <div class="fmt-icon">✂️</div>
+        <div class="fmt-label">Мастер-класс</div>
+        <div class="fmt-title">Посмотрел — сделал</div>
+        <div class="fmt-desc">Одно изделие, одна техника, 1–3 часа. Пошаговый видеоурок — смотришь и сразу повторяешь. Идеально для первого шага.</div>
+        <div class="fmt-price">от <b>1 900 ₸</b></div>
+        <div class="fmt-tags"><span class="fmt-tag">1–3 часа</span><span class="fmt-tag">Одно изделие</span><span class="fmt-tag">Сразу результат</span></div>
+      </div>
+    </div>
+
+    <div class="sh"><div><div class="stg">Популярное</div><div class="sti">Курсы и МК <span>этой недели</span></div></div><div class="sa" onclick="showScreen('catalog')">Смотреть все →</div></div>
+    <div class="kgrid4" id="home-cards"></div>
+  </section>
+
+  <section class="sec" style="background:var(--cr2);padding-top:72px;">
+    <div class="sh"><div><div class="stg">Наши мастера</div><div class="sti">Учитесь у <span>лучших</span></div></div><div class="sa">Все мастера →</div></div>
+    <div class="mg">
+      <div class="mc"><div class="mcp" style="background:var(--bx);">ЮМ</div><div class="mcn">Юки Мацумото</div><div class="mcs">Керамика · 🇯🇵 Япония</div><div class="mcc">6 курсов · 8 МК</div></div>
+      <div class="mc"><div class="mcp" style="background:var(--dk2);">ДМ</div><div class="mcn">Дина Мухамедова</div><div class="mcs">Ювелирное дело · 🇰🇿 КЗ</div><div class="mcc">5 курсов · 12 МК</div></div>
+      <div class="mc"><div class="mcp" style="background:var(--mid);">СН</div><div class="mcn">Сауле Нурланова</div><div class="mcs">Батик · 🇰🇿 Казахстан</div><div class="mcc">3 курса · 18 МК</div></div>
+      <div class="mc"><div class="mcp" style="background:var(--bx3);">ЛБ</div><div class="mcn">Лука Бруно</div><div class="mcs">Ювелирное дело · 🇮🇹 Италия</div><div class="mcc">4 курса · 6 МК</div></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="ctat">Для мастеров</div>
+    <div class="ctah">Поделитесь своим <span>искусством</span></div>
+    <p class="ctas">Создайте курс или мастер-класс, найдите учеников по всему миру. Sheber берёт только 15% — остальное ваше.</p>
+    <div class="ctaa">
+      <button class="ctabp">Стать мастером</button>
+      <button class="ctabg">Узнать больше</button>
+    </div>
+  </section>
+
+  <footer class="ft">
+    <div class="ftl">SHE<b>B</b>ER</div>
+    <div class="ftlinks"><div class="ftli">О платформе</div><div class="ftli">Для мастеров</div><div class="ftli">Поддержка</div><div class="ftli">Instagram</div></div>
+    <div class="ftc">© 2026 Sheber. Все права защищены.</div>
+  </footer>
+</div>
+
+<!-- ===== CATALOG SCREEN ===== -->
+<div class="screen" id="screen-catalog">
+  <div class="ph">
+    <div class="ph-bread">Главная → <span onclick="showScreen('home')" style="cursor:pointer;">Каталог</span></div>
+    <div class="ph-title">Курсы от лучших <b>мастеров мира</b></div>
+    <div class="ph-sub">340+ уроков от хэндмейд-дизайнеров из Казахстана, Японии, Италии, Франции и других стран</div>
+    <div class="ph-ai-badge"><div class="ph-ai-dot"></div><div class="ph-ai-text">AI-перевод в реальном времени — скоро на Sheber</div></div>
+    <div class="search-wrap">
+      <input class="search-inp" placeholder="Поиск по курсам, техникам, мастерам, странам...">
+      <button class="search-btn">Найти</button>
+    </div>
+  </div>
+
+  <div class="cat-body">
+    <div class="sidebar">
+      <div class="sb-section">
+        <div class="sb-title">Направление</div>
+        <div class="sb-opts">
+          <div class="sb-opt active" onclick="filterCat('all',this)"><span>Все</span><span class="sb-opt-count">340</span></div>
+          <div class="sb-opt" onclick="filterCat('Керамика',this)"><span>Керамика</span><span class="sb-opt-count">84</span></div>
+          <div class="sb-opt" onclick="filterCat('Ювелирное',this)"><span>Ювелирное дело</span><span class="sb-opt-count">62</span></div>
+          <div class="sb-opt" onclick="filterCat('Вышивка',this)"><span>Вышивка</span><span class="sb-opt-count">97</span></div>
+          <div class="sb-opt" onclick="filterCat('Батик',this)"><span>Батик и шёлк</span><span class="sb-opt-count">41</span></div>
+          <div class="sb-opt" onclick="filterCat('Кожа',this)"><span>Кожа</span><span class="sb-opt-count">28</span></div>
+          <div class="sb-opt" onclick="filterCat('Макраме',this)"><span>Макраме</span><span class="sb-opt-count">19</span></div>
+        </div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Страна мастера</div>
+        <div class="sb-opts">
+          <div class="sb-opt active" onclick="toggleSbOpt(this)"><span>🌍 Весь мир</span></div>
+          <div class="sb-opt" onclick="toggleSbOpt(this)"><span>🇰🇿 Казахстан</span></div>
+          <div class="sb-opt" onclick="toggleSbOpt(this)"><span>🇷🇺 Россия</span></div>
+          <div class="sb-opt" onclick="toggleSbOpt(this)"><span>🇯🇵 Япония</span></div>
+          <div class="sb-opt" onclick="toggleSbOpt(this)"><span>🇮🇹 Италия</span></div>
+          <div class="sb-opt" onclick="toggleSbOpt(this)"><span>🇫🇷 Франция</span></div>
+        </div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Язык урока</div>
+        <div class="lang-row">
+          <div class="lang-pill active">Все</div>
+          <div class="lang-pill">RU</div>
+          <div class="lang-pill">KZ</div>
+          <div class="lang-pill">EN</div>
+          <div class="lang-pill">JA</div>
+          <div class="lang-pill">IT</div>
+        </div>
+        <div class="ai-note">✦ AI-перевод — скоро</div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Формат</div>
+        <div class="sb-opts">
+          <div class="sb-opt active" onclick="filterType('all',this)"><span>Все форматы</span></div>
+          <div class="sb-opt" onclick="filterType('к',this)"><span>Курс</span></div>
+          <div class="sb-opt" onclick="filterType('м',this)"><span>Мастер-класс</span></div>
+        </div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Цена, ₸</div>
+        <div class="price-row">
+          <input class="price-inp" type="number" placeholder="от" value="0">
+          <input class="price-inp" type="number" placeholder="до" value="25000">
+        </div>
+      </div>
+      <button class="sb-reset" onclick="resetFilters()">Сбросить фильтры</button>
+    </div>
+
+    <div>
+      <div class="type-tabs">
+        <div class="type-tab active" onclick="filterTypeTab('all',this)">Все <span class="type-tab-count">340</span></div>
+        <div class="type-tab" onclick="filterTypeTab('к',this)">Курсы <span class="type-tab-count">128</span></div>
+        <div class="type-tab" onclick="filterTypeTab('м',this)">Мастер-классы <span class="type-tab-count">212</span></div>
+      </div>
+      <div class="cat-main">
+        <div class="sort-row">
+          <div class="sort-left">Найдено: <b id="count-label">12 результатов</b></div>
+          <select class="sort-sel" onchange="sortCards(this.value)">
+            <option>По популярности</option>
+            <option>По рейтингу</option>
+            <option>Сначала дешевле</option>
+            <option>Сначала дороже</option>
+          </select>
+        </div>
+        <div class="kgrid" id="catalog-grid"></div>
+        <div class="load-more"><button class="btn-more">Показать ещё →</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA=[
+  {type:'к',cat:'Керамика',title:'Японская керамика вабисаби: философия и техника',master:'ЮМ',mname:'Юки Мацумото',price:15900,rating:5.0,students:312,dur:'10 уроков',tags:['Керамика','Япония'],bg:'linear-gradient(145deg,#8B0000,#5C0000)',mc:'#8B0000',country:'🇯🇵',ai:true},
+  {type:'м',cat:'Керамика',title:'Слепи эту вазу — техника коил за вечер',master:'АК',mname:'Айгерим Касымова',price:2500,rating:5.0,students:89,dur:'2 часа',tags:['Быстро','КЗ'],bg:'linear-gradient(145deg,#A01530,#6B0000)',mc:'#8B0000',country:'🇰🇿',ai:false},
+  {type:'м',cat:'Батик',title:'Расписной шёлковый платок — один вечер',master:'СН',mname:'Сауле Нурланова',price:1900,rating:4.8,students:156,dur:'1.5 часа',tags:['Шёлк','КЗ'],bg:'linear-gradient(145deg,#C4956A,#8B6B52)',mc:'#C4956A',country:'🇰🇿',ai:false},
+  {type:'к',cat:'Ювелирное',title:'Итальянская ювелирка: золото и серебро',master:'ЛБ',mname:'Лука Бруно',price:22900,rating:4.9,students:145,dur:'14 уроков',tags:['Люкс','IT'],bg:'linear-gradient(145deg,#3D1C1C,#1A0A0A)',mc:'#3D1C1C',country:'🇮🇹',ai:true},
+  {type:'м',cat:'Ювелирное',title:'Кольцо из серебра своими руками',master:'ДМ',mname:'Дина Мухамедова',price:3500,rating:4.9,students:112,dur:'3 часа',tags:['Серебро','КЗ'],bg:'linear-gradient(145deg,#8B0000,#3D1C1C)',mc:'#8B0000',country:'🇰🇿',ai:false},
+  {type:'к',cat:'Вышивка',title:'Французская вышивка Luneville: техника крючком',master:'СД',mname:'Софи Дюпон',price:18500,rating:4.9,students:203,dur:'8 уроков',tags:['Техника','FR'],bg:'linear-gradient(145deg,#A01530,#8B0000)',mc:'#A01530',country:'🇫🇷',ai:true},
+  {type:'м',cat:'Вышивка',title:'Вышитая брошь с казахским узором',master:'ЗА',mname:'Зарина Ахметова',price:1500,rating:4.7,students:445,dur:'1 час',tags:['МК','КЗ'],bg:'linear-gradient(145deg,#C4956A,#A01530)',mc:'#C4956A',country:'🇰🇿',ai:false},
+  {type:'к',cat:'Кожа',title:'Флорентийское кожевенное дело',master:'МР',mname:'Марко Росси',price:19900,rating:4.8,students:88,dur:'6 уроков',tags:['Флоренция','IT'],bg:'linear-gradient(145deg,#3D1C1C,#8B6B52)',mc:'#3D1C1C',country:'🇮🇹',ai:true},
+  {type:'м',cat:'Кожа',title:'Кожаный брелок за один вечер',master:'МБ',mname:'Марат Байжанов',price:2200,rating:4.6,students:321,dur:'1.5 часа',tags:['Быстро','КЗ'],bg:'linear-gradient(145deg,#8B6B52,#3D1C1C)',mc:'#8B6B52',country:'🇰🇿',ai:false},
+  {type:'к',cat:'Макраме',title:'Макраме от французского дизайнера',master:'ЭМ',mname:'Эмми Мартен',price:12900,rating:4.7,students:178,dur:'7 уроков',tags:['Декор','FR'],bg:'linear-gradient(145deg,#C4956A,#7A5C5C)',mc:'#C4956A',country:'🇫🇷',ai:true},
+  {type:'м',cat:'Батик',title:'Роспись футболки тай-дай',master:'СН',mname:'Сауле Нурланова',price:2900,rating:4.9,students:267,dur:'2 часа',tags:['МК','Одежда'],bg:'linear-gradient(145deg,#8B0000,#C4956A)',mc:'#8B0000',country:'🇰🇿',ai:false},
+  {type:'к',cat:'Керамика',title:'Раку-яки: японская обжиговая керамика',master:'КТ',mname:'Кенджи Танака',price:16500,rating:4.9,students:134,dur:'6 уроков',tags:['Япония','Огонь'],bg:'linear-gradient(145deg,#7A5C5C,#3D1C1C)',mc:'#7A5C5C',country:'🇯🇵',ai:true},
+];
+
+let activeType='all';
+let activeCat='all';
+
+function cardHTML(d){
+  const isK=d.type==='к';
+  return `<div class="kc">
+    <div class="kcimg" style="background:${d.bg};">
+      <div class="kc-badges">
+        <div class="kc-type ${d.type}">${isK?'КУРС':'МК'}</div>
+        ${d.ai?'<div class="kc-ai">✦ AI</div>':''}
+      </div>
+      <div class="kc-dur">${d.dur}</div>
+      <div class="kc-country">${d.country}</div>
+      <button class="kc-fav">♡</button>
+    </div>
+    <div class="kcb">
+      <div class="kcm"><div class="kca" style="background:${d.mc};">${d.master}</div><div class="kcmn">${d.mname}</div></div>
+      <div class="kct">${d.title}</div>
+      <div class="kc-tags">${d.tags.map(t=>`<span class="kc-tag">${t}</span>`).join('')}</div>
+      <div class="kcf"><div class="kcp">${d.price.toLocaleString('ru')} ₸</div><div class="kcr">★ ${d.rating} · ${d.students}</div></div>
+    </div>
+  </div>`;
+}
+
+function renderHome(){
+  document.getElementById('home-cards').innerHTML = DATA.slice(0,4).map(cardHTML).join('');
+}
+
+function renderCatalog(data){
+  document.getElementById('catalog-grid').innerHTML = data.map(cardHTML).join('');
+  document.getElementById('count-label').textContent = data.length+' результатов';
+}
+
+function getFiltered(){
+  return DATA.filter(d=>{
+    const tOk=activeType==='all'||d.type===activeType;
+    const cOk=activeCat==='all'||d.cat===activeCat;
+    return tOk&&cOk;
+  });
+}
+
+function filterCat(c,el){
+  activeCat=c;
+  document.querySelectorAll('.sidebar .sb-section')[0].querySelectorAll('.sb-opt').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  renderCatalog(getFiltered());
+}
+
+function filterType(t,el){
+  activeType=t;
+  el.closest('.sb-opts').querySelectorAll('.sb-opt').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  renderCatalog(getFiltered());
+}
+
+function filterTypeTab(t,el){
+  activeType=t;
+  document.querySelectorAll('.type-tab').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  renderCatalog(getFiltered());
+}
+
+function toggleSbOpt(el){
+  el.closest('.sb-opts').querySelectorAll('.sb-opt').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function sortCards(v){
+  let s=[...getFiltered()];
+  if(v==='По рейтингу')s.sort((a,b)=>b.rating-a.rating);
+  else if(v==='Сначала дешевле')s.sort((a,b)=>a.price-b.price);
+  else if(v==='Сначала дороже')s.sort((a,b)=>b.price-a.price);
+  renderCatalog(s);
+}
+
+function resetFilters(){
+  activeType='all';activeCat='all';
+  document.querySelectorAll('.sb-opt').forEach((x,i)=>{x.classList.remove('active');if(i===0||i===7||i===13||i===16)x.classList.add('active');});
+  renderCatalog(DATA);
+}
+
+function showScreen(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  document.querySelectorAll('.nli').forEach(n=>n.classList.remove('act'));
+  document.getElementById('nav-'+name)?.classList.add('act');
+  window.scrollTo(0,0);
+}
+
+renderHome();
+renderCatalog(DATA);
+</script>
+</body>
+</html>
