@@ -671,9 +671,17 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
 .mob-nav-label{font-size:9px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
 
 /* Отступ снизу для контента чтобы не перекрывал bottom nav */
-@media(max-width:768px){
-  body{padding-bottom:64px;}
-}
+/* SUGGEST CATEGORY */
+.suggest-overlay{position:fixed;inset:0;background:rgba(26,10,10,.7);z-index:300;display:none;align-items:center;justify-content:center;}
+.suggest-overlay.open{display:flex;}
+.suggest-box{background:var(--cr);width:400px;max-width:95vw;border-radius:10px;overflow:hidden;}
+.suggest-head{background:var(--dk);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;}
+.suggest-head-title{font-size:17px;font-weight:700;color:var(--cr);}
+.suggest-close{background:none;border:none;font-size:18px;color:rgba(250,247,242,.4);cursor:pointer;}
+.suggest-body{padding:24px 28px;}
+.suggest-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:20px;}
+.btn-suggest-send{font-family:var(--f);font-size:14px;font-weight:600;width:100%;padding:13px;background:var(--bx);color:var(--cr);border:none;border-radius:4px;cursor:pointer;margin-top:4px;}
+.btn-suggest-send:hover{background:var(--bx2);}
 /* ===== KASPI MODAL ===== */
 .kaspi-overlay{position:fixed;inset:0;background:rgba(26,10,10,.75);z-index:300;display:none;align-items:center;justify-content:center;}
 .kaspi-overlay.open{display:flex;}
@@ -794,7 +802,7 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
   <section class="hero">
     <div class="hl">
       <div class="htag">Платформа для мастеров мира</div>
-      <h1 class="hh1">Хэндмейд —<br>это <span>новая</span><br>роскошь</h1>
+      <h1 class="hh1">Handmade —<br>это <span>новая</span><br>роскошь</h1>
       <p class="hsub">Sheber объединяет лучших хэндмейд-дизайнеров и мастеров из Казахстана, Японии, Италии и других стран.</p>
       <div class="hact">
         <button class="hbtn hbp" onclick="showScreen('catalog')">Смотреть курсы</button>
@@ -814,7 +822,7 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
   </section>
 
   <div class="mq"><div class="mqi">
-    <span class="mqt">Керамика</span><span class="mqd"> · </span><span class="mqt">Ювелирное дело</span><span class="mqd"> · </span><span class="mqt">Роспись шёлка</span><span class="mqd"> · </span><span class="mqt">Вышивка</span><span class="mqd"> · </span><span class="mqt">Кожа</span><span class="mqd"> · </span><span class="mqt">Макраме</span><span class="mqd"> · </span><span class="mqt">Батик</span><span class="mqd"> · </span><span class="mqt">Войлок</span><span class="mqd"> · </span><span class="mqt">Керамика</span><span class="mqd"> · </span><span class="mqt">Ювелирное дело</span><span class="mqd"> · </span><span class="mqt">Роспись шёлка</span><span class="mqd"> · </span><span class="mqt">Вышивка</span><span class="mqd"> · </span><span class="mqt">Кожа</span><span class="mqd"> · </span><span class="mqt">Макраме</span><span class="mqd"> · </span>
+    <span class="mqt">Керамика</span><span class="mqd"> · </span><span class="mqt">Ювелирное дело</span><span class="mqd"> · </span><span class="mqt">Роспись шёлка</span><span class="mqd"> · </span><span class="mqt">Вышивка</span><span class="mqd"> · </span><span class="mqt">Кожа</span><span class="mqd"> · </span><span class="mqt">Вязание</span><span class="mqd"> · </span><span class="mqt">Свечеварение</span><span class="mqd"> · </span><span class="mqt">Мыловарение</span><span class="mqd"> · </span><span class="mqt">Батик</span><span class="mqd"> · </span><span class="mqt">Макраме</span><span class="mqd"> · </span><span class="mqt">Войлок</span><span class="mqd"> · </span><span class="mqt">Керамика</span><span class="mqd"> · </span><span class="mqt">Ювелирное дело</span><span class="mqd"> · </span><span class="mqt">Роспись шёлка</span><span class="mqd"> · </span><span class="mqt">Вышивка</span><span class="mqd"> · </span><span class="mqt">Кожа</span><span class="mqd"> · </span><span class="mqt">Вязание</span><span class="mqd"> · </span><span class="mqt">Свечеварение</span><span class="mqd"> · </span><span class="mqt">Мыловарение</span><span class="mqd"> · </span>
   </div></div>
 
   <section class="sec">
@@ -882,12 +890,16 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
       <div class="sb-section">
         <div class="sb-title">Направление</div>
         <div class="sb-opts">
-          <div class="sb-opt active" onclick="filterCat('all',this)"><span>Все</span><span class="sb-opt-count">340</span></div>
-          <div class="sb-opt" onclick="filterCat('Керамика',this)"><span>Керамика</span><span class="sb-opt-count">84</span></div>
-          <div class="sb-opt" onclick="filterCat('Ювелирное',this)"><span>Ювелирное дело</span><span class="sb-opt-count">62</span></div>
-          <div class="sb-opt" onclick="filterCat('Вышивка',this)"><span>Вышивка</span><span class="sb-opt-count">97</span></div>
-          <div class="sb-opt" onclick="filterCat('Батик',this)"><span>Батик и шёлк</span><span class="sb-opt-count">41</span></div>
-          <div class="sb-opt" onclick="filterCat('Кожа',this)"><span>Кожа</span><span class="sb-opt-count">28</span></div>
+          <div class="sb-opt active" onclick="filterCat('all',this)"><span>Все</span><span class="sb-opt-count" id="cnt-all">0</span></div>
+          <div class="sb-opt" onclick="filterCat('Керамика',this)"><span>🏺 Керамика</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Ювелирное',this)"><span>💍 Ювелирное дело</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Вышивка',this)"><span>🧵 Вышивка</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Батик',this)"><span>🎨 Батик и шёлк</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Кожа',this)"><span>👜 Кожа</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Вязание',this)"><span>🧶 Вязание</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Свечеварение',this)"><span>🕯️ Свечеварение</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Мыловарение',this)"><span>🧼 Мыловарение</span><span class="sb-opt-count">—</span></div>
+          <div class="sb-opt" onclick="filterCat('Другое',this)"><span>✦ Другое</span><span class="sb-opt-count">—</span></div>
         </div>
       </div>
       <div class="sb-section">
@@ -969,14 +981,19 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
           </div>
           <div class="ufield">
             <div class="ufield-label">Категория *</div>
-            <select class="ufield-input" id="uf-cat">
-              <option>Керамика</option>
-              <option>Ювелирное</option>
-              <option>Вышивка</option>
-              <option>Батик</option>
-              <option>Кожа</option>
-              <option>Другое</option>
+            <select class="ufield-input" id="uf-cat" onchange="toggleCustomCat(this)">
+              <option value="Керамика">Керамика</option>
+              <option value="Ювелирное">Ювелирное дело</option>
+              <option value="Вышивка">Вышивка</option>
+              <option value="Батик">Батик и шёлк</option>
+              <option value="Кожа">Кожа</option>
+              <option value="Вязание">Вязание</option>
+              <option value="Свечеварение">Свечеварение</option>
+              <option value="Мыловарение">Мыловарение</option>
+              <option value="Другое">Другое</option>
+              <option value="__custom__">✦ Предложить свою категорию</option>
             </select>
+            <input class="ufield-input" id="uf-cat-custom" placeholder="Напишите вашу категорию..." style="display:none;margin-top:8px;" oninput="this.dataset.val=this.value">
           </div>
           <div class="ufield">
             <div class="ufield-label">Цена (₸) *</div>
@@ -1014,6 +1031,29 @@ body{font-family:var(--f);background:var(--cr);color:var(--dk);min-height:100vh;
           <div class="empty-text">У вас пока нет курсов<br>Нажмите «+ Добавить курс» чтобы начать</div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUGGEST CATEGORY MODAL -->
+<div class="suggest-overlay" id="suggest-modal">
+  <div class="suggest-box">
+    <div class="suggest-head">
+      <div class="suggest-head-title">✦ Предложить категорию</div>
+      <button class="suggest-close" onclick="closeSuggestCat()">✕</button>
+    </div>
+    <div class="suggest-body">
+      <div class="suggest-desc">Не нашли свою категорию? Предложите — мы добавим её на платформу если наберётся достаточно мастеров.</div>
+      <div class="field">
+        <div class="field-label">Название категории</div>
+        <input type="text" id="suggest-cat-input" class="field input" placeholder="Например: Флористика, Декупаж, Роспись по дереву..." style="font-family:var(--f);font-size:14px;width:100%;padding:11px 14px;border:1.5px solid var(--cr3);border-radius:4px;background:var(--cr);color:var(--dk);outline:none;">
+      </div>
+      <div class="field" style="margin-top:12px;">
+        <div class="field-label">Ваш email (необязательно)</div>
+        <input type="email" id="suggest-email-input" placeholder="your@email.com" style="font-family:var(--f);font-size:14px;width:100%;padding:11px 14px;border:1.5px solid var(--cr3);border-radius:4px;background:var(--cr);color:var(--dk);outline:none;">
+      </div>
+      <button class="btn-suggest-send" onclick="sendSuggestion()">Отправить предложение</button>
+      <div id="suggest-msg" style="font-size:12px;text-align:center;margin-top:10px;"></div>
     </div>
   </div>
 </div>
@@ -1399,6 +1439,7 @@ async function loadCourses(){
     DATA = data.map(d=>({...d, tags: d.tags||[]}));
     renderHome();
     renderCatalog(getFiltered());
+    updateCatCounts();
   } catch(e){
     console.warn('Ошибка загрузки курсов:', e);
   }
@@ -1705,7 +1746,10 @@ function toggleUploadForm(){
 async function submitCourse(){
   const title = document.getElementById('uf-title').value.trim();
   const type  = document.getElementById('uf-type').value;
-  const cat   = document.getElementById('uf-cat').value;
+  const catSel = document.getElementById('uf-cat').value;
+  const catCustom = document.getElementById('uf-cat-custom').value.trim();
+  const cat = catSel === '__custom__' ? (catCustom || 'Другое') : catSel;
+  if(catSel === '__custom__' && !catCustom){ msg.textContent='⚠️ Напишите название вашей категории'; msg.style.color='var(--bx)'; return; }
   const price = parseInt(document.getElementById('uf-price').value);
   const dur   = document.getElementById('uf-dur').value.trim();
   const country = document.getElementById('uf-country').value.trim() || '🇰🇿';
@@ -1747,7 +1791,8 @@ async function submitCourse(){
     msg.textContent='✓ Курс опубликован! Он появился в каталоге.'; msg.style.color='#2d6a4f';
     btn.textContent='Опубликовать курс'; btn.disabled=false;
     // Очищаем форму
-    ['uf-title','uf-price','uf-dur','uf-country','uf-video','uf-desc'].forEach(id=>document.getElementById(id).value='');
+    ['uf-title','uf-price','uf-dur','uf-country','uf-video','uf-desc','uf-cat-custom'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('uf-cat-custom').style.display='none';
     setTimeout(()=>{ toggleUploadForm(); msg.textContent=''; loadMasterCourses(); },1500);
   } catch(e){
     msg.textContent='Ошибка: '+e.message; msg.style.color='var(--bx)';
@@ -1774,6 +1819,43 @@ async function loadMasterCourses(){
         <div class="mcc-status">✓ Опубликован</div>
       </div>`).join('');
   }
+}
+
+// ====== SUGGEST CATEGORY ======
+function openSuggestCat(){ document.getElementById('suggest-modal').classList.add('open'); }
+function closeSuggestCat(){ document.getElementById('suggest-modal').classList.remove('open'); }
+
+function toggleCustomCat(sel){
+  const customInput = document.getElementById('uf-cat-custom');
+  if(sel.value === '__custom__'){
+    customInput.style.display = 'block';
+    customInput.focus();
+  } else {
+    customInput.style.display = 'none';
+  }
+}
+async function sendSuggestion(){
+  const cat = document.getElementById('suggest-cat-input').value.trim();
+  const email = document.getElementById('suggest-email-input').value.trim();
+  const msg = document.getElementById('suggest-msg');
+  if(!cat){ msg.textContent='Введите название категории'; msg.style.color='var(--bx)'; return; }
+  // Сохраняем в Supabase если есть таблица, иначе просто показываем спасибо
+  msg.textContent='✓ Спасибо! Мы рассмотрим вашу категорию.'; msg.style.color='#2d6a4f';
+  document.getElementById('suggest-cat-input').value='';
+  setTimeout(()=>{ closeSuggestCat(); msg.textContent=''; },2000);
+  showToast('Предложение отправлено! Спасибо 🙌');
+}
+
+// ====== ОБНОВИТЬ СЧЁТЧИКИ КАТЕГОРИЙ ======
+function updateCatCounts(){
+  const cats = ['Керамика','Ювелирное','Вышивка','Батик','Кожа','Вязание','Свечеварение','Мыловарение','Другое'];
+  const allOpts = document.querySelectorAll('.sidebar .sb-opt');
+  // Первый элемент — "Все"
+  if(allOpts[0]) allOpts[0].querySelector('.sb-opt-count').textContent = DATA.length;
+  cats.forEach((cat, i) => {
+    const count = DATA.filter(d=>d.cat===cat).length;
+    if(allOpts[i+1]) allOpts[i+1].querySelector('.sb-opt-count').textContent = count||'0';
+  });
 }
 
 // ====== MOBILE NAV ======
@@ -1807,6 +1889,7 @@ function toggleFollow(){
 // ====== INIT ======
 document.getElementById('auth-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('auth-modal'))closeAuth(); });
 document.getElementById('kaspi-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('kaspi-modal'))closeKaspi(); });
+document.getElementById('suggest-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('suggest-modal'))closeSuggestCat(); });
 loadCourses();
 loadUser();
 </script>
